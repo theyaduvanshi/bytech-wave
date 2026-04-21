@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 30 40% 99%;
+    --foreground: 220 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 15%;
+
+    /* Soft Light Orange - warm premium */
+    --primary: 24 95% 62%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 28 100% 94%;
+    --primary-glow: 24 100% 75%;
+
+    /* Soft Light Blue - clean modern */
+    --secondary: 210 90% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-soft: 210 100% 95%;
+
+    --muted: 30 30% 96%;
+    --muted-foreground: 220 15% 45%;
+
+    --accent: 210 100% 95%;
+    --accent-foreground: 220 30% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 90%;
+    --input: 220 20% 92%;
+    --ring: 24 95% 62%;
+
+    --radius: 1rem;
+
+    /* Premium gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(28 100% 96%) 0%, hsl(210 100% 97%) 50%, hsl(28 100% 96%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(24 95% 62%) 0%, hsl(28 100% 70%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(210 90% 65%) 0%, hsl(220 90% 75%) 100%);
+    --gradient-mix: linear-gradient(135deg, hsl(24 95% 62%) 0%, hsl(210 90% 65%) 100%);
+    --gradient-soft: linear-gradient(135deg, hsl(28 100% 97%) 0%, hsl(210 100% 97%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.9) 0%, hsl(30 50% 99% / 0.7) 100%);
+
+    /* Premium shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(24 60% 60% / 0.12);
+    --shadow-glow: 0 10px 40px -10px hsl(24 95% 62% / 0.35);
+    --shadow-glow-blue: 0 10px 40px -10px hsl(210 90% 65% / 0.35);
+    --shadow-elegant: 0 20px 60px -20px hsl(220 40% 30% / 0.15);
+    --shadow-card: 0 8px 30px -8px hsl(220 30% 40% / 0.1);
+
+    /* Glass */
+    --glass-bg: hsl(0 0% 100% / 0.65);
+    --glass-border: hsl(0 0% 100% / 0.4);
+
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', 'Inter', sans-serif;
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .glass-strong {
+    background: hsl(0 0% 100% / 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid hsl(0 0% 100% / 0.6);
+  }
+
+  .text-gradient {
+    background: var(--gradient-mix);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animated background blobs */
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -50px) scale(1.1); }
+  66% { transform: translate(-30px, 30px) scale(0.95); }
+}
+
+@keyframes wave-drift {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-25px) translateY(15px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-blob {
+  animation: blob-float 20s ease-in-out infinite;
+}
+
+.animate-wave {
+  animation: wave-drift 15s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 12s ease infinite;
+}
